@@ -47,10 +47,6 @@ The primary goals of this template are to:
 
 We welcome contributions to improve this template. Please feel free to submit issues or pull requests with suggestions, corrections, or enhancements.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - The Django community for their excellent documentation and resources.
