@@ -1,0 +1,44 @@
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#BB2528',
+    'primaryTextColor': '#fff',
+    'primaryBorderColor': '#7C0000',
+    'lineColor': '#F8B229',
+    'secondaryColor': '#006100',
+    'tertiaryColor': '#0000FF'
+  }
+}}%%
+
+graph TD
+    A[Start New Session]:::startEnd --> B{Existing Code?}
+    B -->|Yes| C[Context Carryover]:::process
+    B -->|No| D[New Project]:::process
+    C --> E[Provide Code Snapshot]:::snapshot
+    D --> F[Describe Project]:::process
+    E --> G[Session Resume]:::process
+    F --> G
+    G --> H[Incremental Development]:::mainProcess
+    H --> I{Session Limit Reached?}
+    I -->|No| H
+    I -->|Yes| J[Create Code Checkpoint]:::checkpoint
+    J --> K[Session Wrap-up]:::process
+    K --> L[Code Persistence]:::process
+    L --> M{Continue Later?}
+    M -->|Yes| A
+    M -->|No| N[End Development]:::startEnd
+    H --> O{Need to Experiment?}
+    O -->|Yes| P[Create Branch]:::branch
+    P --> Q[Experimental Code Snapshot]:::snapshot
+    Q --> H
+    H --> R{Bug Encountered?}
+    R -->|Yes| S[Revert to Previous Checkpoint]:::checkpoint
+    S --> H
+
+    classDef default fill:#FFF1C1,stroke:#DAA520,stroke-width:2px;
+    classDef process fill:#B0E0E6,stroke:#4682B4,stroke-width:2px;
+    classDef snapshot fill:#98FB98,stroke:#228B22,stroke-width:2px;
+    classDef checkpoint fill:#FFA07A,stroke:#FF4500,stroke-width:2px;
+    classDef branch fill:#DDA0DD,stroke:#8B008B,stroke-width:2px;
+    classDef startEnd fill:#FF6347,stroke:#8B0000,stroke-width:2px;
+    classDef mainProcess fill:#87CEFA,stroke:#4169E1,stroke-width:4px;
